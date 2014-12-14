@@ -34,7 +34,7 @@ export CXXFLAGS=$CFLAGS
 
 $BASE_DIR/configure \
   --prefix=$IOS_CONFIGURE_PREFIX --host=$HOST \
-  --disabled-shared --enable-static
+  --disable-shared --enable-static
 
 cp $BASE_DIR/include/* $THIS_DIR/include
 cp $BASE_DIR/include/SDL_config_iphoneos.h $THIS_DIR/include/SDL_config.h || exit 2
