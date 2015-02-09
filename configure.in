@@ -1813,7 +1813,7 @@ AC_HELP_STRING([--enable-fusionsound], [use FusionSound audio driver [[default=n
             AC_DEFINE(SDL_AUDIO_DRIVER_FUSIONSOUND, 1, [ ])
             SOURCES="$SOURCES $srcdir/src/audio/fusionsound/*.c"
             EXTRA_CFLAGS="$EXTRA_CFLAGS $FUSIONSOUND_CFLAGS"
-            
+
             AC_ARG_ENABLE(fusionsound-shared,
 AC_HELP_STRING([--enable-fusionsound-shared], [dynamically load fusionsound audio support [[default=yes]]]),
                           , enable_fusionsound_shared=yes)
@@ -1833,7 +1833,7 @@ AC_HELP_STRING([--enable-fusionsound-shared], [dynamically load fusionsound audi
                 SUMMARY_audio="${SUMMARY_audio} fusionsound"
             fi
             AC_MSG_RESULT($fusionsound_shared)
-            
+
             have_audio=yes
         fi
     fi
@@ -1902,7 +1902,7 @@ CheckOpenGLESX11()
         if test x$video_opengl_egl = xyes; then
             AC_DEFINE(SDL_VIDEO_OPENGL_EGL, 1, [ ])
         fi
-            
+
         AC_MSG_CHECKING(for OpenGL ES v1 headers)
         video_opengles_v1=no
         AC_TRY_COMPILE([
@@ -1918,7 +1918,7 @@ CheckOpenGLESX11()
             AC_DEFINE(SDL_VIDEO_RENDER_OGL_ES, 1, [ ])
             SUMMARY_video="${SUMMARY_video} opengl_es1"
         fi
-        
+
         AC_MSG_CHECKING(for OpenGL ES v2 headers)
         video_opengles_v2=no
         AC_TRY_COMPILE([
@@ -1967,7 +1967,7 @@ CheckWINDOWSGLES()
             AC_DEFINE(SDL_VIDEO_OPENGL_EGL, 1, [ ])
             SUMMARY_video="${SUMMARY_video} opengl_es1"
         fi
-       
+
         AC_MSG_CHECKING(for OpenGL ES v2 headers)
         video_opengles_v2=no
         AC_TRY_COMPILE([
@@ -2459,7 +2459,7 @@ CheckUSBHID()
                     AC_CHECK_HEADER(libusb.h, [USB_CFLAGS="-DHAVE_LIBUSB_H"])
                     AC_CHECK_LIB(usb, hid_init, [USB_LIBS="$USB_LIBS -lusb"])
                 fi
-                    
+
                 save_CFLAGS="$CFLAGS"
                 CFLAGS="$CFLAGS $USB_CFLAGS"
 
@@ -2525,7 +2525,7 @@ CheckUSBHID()
                         USB_CFLAGS="$USB_CFLAGS -DUSBHID_UCR_DATA"
                     fi
                     AC_MSG_RESULT($have_usbhid_ucr_data)
-                    
+
                     AC_MSG_CHECKING(for new usbhid API)
                     have_usbhid_new=no
                     AC_TRY_COMPILE([
@@ -2752,12 +2752,12 @@ case "$host" in
         fi
         # Set up files for udev hotplugging support
         if test x$enable_libudev = xyes && test x$have_libudev_h_hdr = xyes; then
-            SOURCES="$SOURCES $srcdir/src/core/linux/SDL_udev.c"               
+            SOURCES="$SOURCES $srcdir/src/core/linux/SDL_udev.c"
         fi
         # Set up files for evdev input
         if test x$use_input_events = xyes; then
             SOURCES="$SOURCES $srcdir/src/core/linux/SDL_evdev.c"
-        fi       
+        fi
         ;;
     *-*-cygwin* | *-*-mingw32*)
         ARCH=win32
@@ -2938,7 +2938,7 @@ AC_HELP_STRING([--enable-render-d3d], [enable the Direct3D render driver [[defau
         SOURCES="$srcdir/src/main/haiku/*.cc $SOURCES"
         EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lroot -lbe -lmedia -lgame -ldevice -ltextencoding"
         ;;
-    arm*-apple-darwin*)
+    arm*-apple-darwin* | aarch64-apple-darwin*)
         # iOS - We are not writing anything to confdefs.h because you have to replace
         # SDL_config.h for SDL_config_iphoneos.h anyway
         ARCH=ios
@@ -3233,7 +3233,7 @@ if test x$enable_static = xyes; then
     SUMMARY="${SUMMARY}Building Static Libraries\n"
 fi
 SUMMARY="${SUMMARY}Enabled modules :${SUMMARY_modules}\n"
-SUMMARY="${SUMMARY}Assembly Math   :${SUMMARY_math}\n" 
+SUMMARY="${SUMMARY}Assembly Math   :${SUMMARY_math}\n"
 SUMMARY="${SUMMARY}Audio drivers   :${SUMMARY_audio}\n"
 SUMMARY="${SUMMARY}Video drivers   :${SUMMARY_video}\n"
 if test x$have_x = xyes; then

@@ -22937,7 +22937,7 @@ $as_echo "#define SDL_FILESYSTEM_HAIKU 1" >>confdefs.h
         SOURCES="$srcdir/src/main/haiku/*.cc $SOURCES"
         EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lroot -lbe -lmedia -lgame -ldevice -ltextencoding"
         ;;
-    arm*-apple-darwin*)
+    arm*-apple-darwin* | aarch64-apple-darwin*)
         # iOS - We are not writing anything to confdefs.h because you have to replace
         # SDL_config.h for SDL_config_iphoneos.h anyway
         ARCH=ios
