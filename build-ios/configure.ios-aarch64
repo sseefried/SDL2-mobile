@@ -1,0 +1,12 @@
+#!/bin/bash
+THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASE_DIR=$THIS_DIR/..
+################################################################
+
+$BASE_DIR/$IOS_AARCH64_CONFIGURE_CMD --disable-shared --enable-static
+
+cp $BASE_DIR/include/* $THIS_DIR/include
+cp $BASE_DIR/include/SDL_config_iphoneos.h $THIS_DIR/include/SDL_config.h || exit 2
+sed -i "" -e "s|^EXTRA_CFLAGS.*|EXTRA_CFLAGS=-I./include|g" $THIS_DIR/Makefile || exit 2
+sed -i "" -e "s|^EXTRA_LDFLAGS.*|EXTRA_LDFLAGS=-lm|g" $THIS_DIR/Makefile || exit 2
+
